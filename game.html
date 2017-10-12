@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SKIER IN THE FOREST</title>
+    <link rel="stylesheet" href="style.css"/>
+    <style>body, html {margin: 0px; padding: 0px;}</style>
+    <script type="text/javascript" src="maps.js"></script>
+    <script type="text/javascript" src="map.js"></script>
+	<script type="text/javascript" src="lee.js"></script>
+    <script type="text/javascript" src="skier.js"></script>
+	<script type="text/javascript" src="finishD.js"></script>
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="game_script.js"></script>
+</head>
+<body onload="init()">
+	<script>
+		$(document).ready(function(){
+			//Скрыть PopUp при загрузке страницы    
+			PopUpHide();
+		});
+		//Функция отображения PopUp
+		function PopUpShow(){
+			$("#popup1").show();
+		}
+		//Функция скрытия PopUp
+		function PopUpHide(){
+			$("#popup1").hide();
+		}
+	</script>
+	<center>
+		<div><h2>SKIER IN THE FOREST</h2></div>
+		<div>
+			<canvas id="mycanvas" width="640" height="640"></canvas>
+			<textarea rows="40" cols="40" name="text" id="ta"></textarea>
+		</div>
+		<div class="manage">
+			<input type="range" min="0" max="1" id="sw" value="0" disabled>
+			<b><label for="sw" id="labelsw">Find map!</label></b>
+			<input type="range" min="0" max="1" id="sw2" value="0">
+			<b><label for="sw2" id="labelsw2">Easy mode!</label></b>
+			<select id="map_select" onchange="onChange()">
+				<option value="map1">Map #1</option>
+				<option value="map2">Map #2</option>
+				<option value="map3">Map #3</option>
+				<option value="map4">Map #4</option>
+			</select>
+			<button id="st_bt" onclick="start()">Run!</button>
+		</div>
+		<div class="b-container"><a href="javascript:PopUpShow()">Показать справку</a></div>
+		<div class="b-popup" id="popup1">
+			<div class="b-popup-content">
+				<b>Справка по игре "SITF":</b>
+				<br>
+				Основная цель игры - довести лыжника через лес до финиша. Для этого необходимо составить программу, используя команды: up, down, left, right, которые отправят лыжника в путь до ближайшей остановки возле дерева. После каждой команды также можно поставить точку и указать, на какое количество шагов нужно сдвинуть лыжника. Каждая команда пишется на новой строке. В конце каждой команды ставится ';' и осуществляется переход на новую строку.
+				<br>
+				В игре существует "легкий" и "тяжелый" уровни сложности. В тяжелом режиме лыжник переносится на старт, если не достиг финиша за один набор указанных команд.
+				<br>
+				Если в процессе игры лыжник находит карту, он может просмотреть, каков кратчайший путь от старта до финиша.
+				<br>
+				Когда лыжник достигает финиша, он получает оценку своих результатов: "Good!", если он достиг финиша за минимально возможное количество шагов, или "Bad!", если шагов больше, чем необходимо.
+				<br>
+			<a href="javascript:PopUpHide()">Скрыть справку</a>
+			</div>
+		</div>
+	</center>
+</body>
+</html>
